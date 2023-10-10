@@ -19,7 +19,7 @@
 
 /**
  * ViterbiNode is a node of ViterbiLattice
- * @param {string} node_name
+ * @param {number} node_name Word ID
  * @param {number} node_cost Word cost to generate
  * @param {number} start_pos Start position from 1
  * @param {number} length Word length
@@ -45,6 +45,5 @@ function ViterbiNode(node_name, node_cost, start_pos, length, type, left_id, rig
     }
     this.type = type;
 }
-
 
 module.exports = ViterbiNode;

@@ -16,11 +16,10 @@
  */
 
 var expect = require("chai").expect;
-var kuromoji = require("../dist/node/kuromoji.js");  // Not to be browserifiy-ed
-var Tokenizer = require("../src/Tokenizer.js");
+var kuromoji = require("../src/kuromoji.js");  // Not to be browserifiy-ed
+var Tokenizer = require("../src/Tokenizer");
 
-var DIC_DIR = "dist/dict/";
-
+var DIC_DIR = "dict/";
 
 describe("Tokenizer static method test", function () {
     it("splitByPunctuation", function () {
@@ -173,6 +172,10 @@ describe("Tokenizer for IPADic", function () {
         var path = tokenizer.tokenize("となりのトトロ");
         expect(path).to.have.length(3);
     });
+    it("研究 is not split", function () {
+        var path = tokenizer.tokenize("研究");
+        expect(path).to.have.length(1);
+    });
     it("Blank input", function () {
         var path = tokenizer.tokenize("");
         expect(path).to.have.length(0);
@@ -183,5 +186,17 @@ describe("Tokenizer for IPADic", function () {
         expect(path[0].word_position).to.eql(1);
         expect(path[1].word_position).to.eql(2);
         expect(path[2].word_position).to.eql(3);
+    });
+    it("Sentence include punctuation あ、あ。あ、あ。 returns correct positions", function () {
+        var path = tokenizer.tokenize("あ、あ。あ、あ。");
+        expect(path).to.have.length(8);
+        expect(path[0].word_position).to.eql(1);
+        expect(path[1].word_position).to.eql(2);
+        expect(path[2].word_position).to.eql(3);
+        expect(path[3].word_position).to.eql(4);
+        expect(path[4].word_position).to.eql(5);
+        expect(path[5].word_position).to.eql(6);
+        expect(path[6].word_position).to.eql(7);
+        expect(path[7].word_position).to.eql(8);
     });
 });

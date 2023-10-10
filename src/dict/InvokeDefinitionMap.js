@@ -17,9 +17,8 @@
 
 "use strict";
 
-var ByteBuffer = require("../util/ByteBuffer.js");
-var CharacterClass = require("./CharacterClass.js");
-
+var ByteBuffer = require("../util/ByteBuffer");
+var CharacterClass = require("./CharacterClass");
 
 /**
  * InvokeDefinitionMap represents invoke definition a part of char.def
@@ -107,6 +106,5 @@ InvokeDefinitionMap.prototype.toBuffer = function () {
     buffer.shrink();
     return buffer.buffer;
 };
-
 
 module.exports = InvokeDefinitionMap;

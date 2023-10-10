@@ -17,8 +17,7 @@
 
 "use strict";
 
-var ViterbiNode = require("./ViterbiNode.js");
-
+var ViterbiNode = require("./ViterbiNode");
 
 /**
  * ViterbiLattice is a lattice in Viterbi algorithm
@@ -26,7 +25,7 @@ var ViterbiNode = require("./ViterbiNode.js");
  */
 function ViterbiLattice() {
     this.nodes_end_at = [];
-    this.nodes_end_at[0] = [ new ViterbiNode("BOS", 0, 0, 0, "BOS", 0, 0) ];
+    this.nodes_end_at[0] = [ new ViterbiNode(-1, 0, 0, 0, "BOS", 0, 0, "") ];
     this.eos_pos = 1;
 }
 
@@ -55,8 +54,7 @@ ViterbiLattice.prototype.append = function (node) {
 ViterbiLattice.prototype.appendEos = function () {
     var last_index = this.nodes_end_at.length;
     this.eos_pos++;
-    this.nodes_end_at[last_index] = [ new ViterbiNode("EOS", 0, this.eos_pos, 0, "EOS", 0, 0) ];
+    this.nodes_end_at[last_index] = [ new ViterbiNode(-1, 0, this.eos_pos, 0, "EOS", 0, 0, "") ];
 };
-
 
 module.exports = ViterbiLattice;

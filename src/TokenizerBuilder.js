@@ -17,9 +17,8 @@
 
 "use strict";
 
-var Tokenizer = require("./Tokenizer.js");
-var DictionaryLoader = require("./loader/NodeDictionaryLoader.js");
-
+var Tokenizer = require("./Tokenizer");
+var DictionaryLoader = require("./loader/NodeDictionaryLoader");
 
 /**
  * TokenizerBuilder create Tokenizer instance.
@@ -28,10 +27,10 @@ var DictionaryLoader = require("./loader/NodeDictionaryLoader.js");
  * @constructor
  */
 function TokenizerBuilder(option) {
-    if (option.dicPath != null) {
-        this.dic_path = option.dicPath;
-    } else {
+    if (option.dicPath == null) {
         this.dic_path = "dict/";
+    } else {
+        this.dic_path = option.dicPath;
     }
 }
 
@@ -52,7 +51,5 @@ TokenizerBuilder.prototype.build = function (callback) {
  * @param {Object} err Error object
  * @param {Tokenizer} tokenizer Prepared Tokenizer
  */
-
-
 
 module.exports = TokenizerBuilder;

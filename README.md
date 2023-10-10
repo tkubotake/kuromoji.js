@@ -2,16 +2,16 @@ kuromoji.js
 ===========
 
 [![Build Status](https://travis-ci.org/takuyaa/kuromoji.js.svg?branch=master)](https://travis-ci.org/takuyaa/kuromoji.js)
-[![Coverage Status](https://coveralls.io/repos/takuyaa/kuromoji.js/badge.png)](https://coveralls.io/r/takuyaa/kuromoji.js)
-[![npm version](https://badge.fury.io/js/kuromoji.svg)](http://badge.fury.io/js/kuromoji)
-[![Bower version](https://badge.fury.io/bo/kuromoji.svg)](http://badge.fury.io/bo/kuromoji)
+[![Coverage Status](https://coveralls.io/repos/github/takuyaa/kuromoji.js/badge.svg?branch=master)](https://coveralls.io/github/takuyaa/kuromoji.js?branch=master)
+[![npm version](https://badge.fury.io/js/kuromoji.svg)](https://badge.fury.io/js/kuromoji)
 [![dependencies](https://david-dm.org/takuyaa/kuromoji.js.svg)](https://david-dm.org/takuyaa/kuromoji.js)
 [![Code Climate](https://codeclimate.com/github/takuyaa/kuromoji.js/badges/gpa.svg)](https://codeclimate.com/github/takuyaa/kuromoji.js)
+[![Downloads](https://img.shields.io/npm/dm/kuromoji.svg)](https://www.npmjs.com/package/kuromoji)
 
 JavaScript implementation of Japanese morphological analyzer.
-This is a pure JavaScript porting of [Kuromoji](http://www.atilika.com/ja/products/kuromoji.html).
+This is a pure JavaScript porting of [Kuromoji](https://www.atilika.com/ja/kuromoji/).
 
-You can see how kuromoji.js works in [demo site](http://takuyaa.github.io/kuromoji.js/demo/tokenize.html).
+You can see how kuromoji.js works in [demo site](https://takuyaa.github.io/kuromoji.js/demo/tokenize.html).
 
 
 Directory
@@ -19,16 +19,13 @@ Directory
 
 Directory tree is as follows:
 
-    demo/        -- Demo
-    dist/        -- Released objects
-      browser/   -- JavaScript file for browser (Browserified)
-      dict/      -- Dictionaries for tokenizer (gzipped)
-      node/      -- JavaScript file for Node.js
-    example/     -- Examples to use in Node.js
-    jsdoc/       -- API Documentation
-    scripts/     -- Node.js scripts
-    src/         -- JavaScript source
-    test/        -- Unit test
+    build/
+      kuromoji.js -- JavaScript file for browser (Browserified)
+    demo/         -- Demo
+    dict/         -- Dictionaries for tokenizer (gzipped)
+    example/      -- Examples to use in Node.js
+    src/          -- JavaScript source
+    test/         -- Unit test
 
 
 Usage
@@ -60,7 +57,7 @@ You can prepare tokenizer like this:
 
 ### Browser
 
-You only need the dist/browser/kuromoji.js and dist/dict/*.dat.gz files
+You only need the build/kuromoji.js and dict/*.dat.gz files
 
 Install with Bower package manager:
 
@@ -104,4 +101,4 @@ The function tokenize() returns an JSON array like this:
 
 (This is defined in src/util/IpadicFormatter.js)
 
-Also see the JSDoc under jsdoc directory.
+See also [JSDoc page](https://takuyaa.github.io/kuromoji.js/jsdoc/) in details.

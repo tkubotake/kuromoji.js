@@ -82,7 +82,6 @@ var stringToUtf8Bytes = function (str) {
     return bytes.subarray(0, j);
 };
 
-
 /**
  * Convert UTF-8 ArrayBuffer to String (UTF-16)
  *
@@ -132,7 +131,6 @@ var utf8BytesToString = function (bytes) {
 
     return str;
 };
-
 
 /**
  * Utilities to manipulate byte sequence
@@ -213,7 +211,11 @@ ByteBuffer.prototype.getShort = function (index) {
     }
     var lower = this.buffer[index];
     var upper = this.buffer[index + 1];
-    return (upper << 8) + lower;
+    var value = (upper << 8) + lower;
+    if (value & 0x8000) {
+	value = -((value - 1) ^ 0xFFFF);
+    }
+    return value;
 };
 
 // Write integer to buffer by little endian
@@ -283,6 +285,5 @@ ByteBuffer.prototype.getString = function (index) {
     this.position = index;
     return utf8BytesToString(buf);
 };
-
 
 module.exports = ByteBuffer;

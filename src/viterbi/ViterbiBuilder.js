@@ -17,10 +17,9 @@
 
 "use strict";
 
-var ViterbiNode = require("./ViterbiNode.js");
-var ViterbiLattice = require("./ViterbiLattice.js");
-var SurrogateAwareString = require("../util/SurrogateAwareString.js");
-
+var ViterbiNode = require("./ViterbiNode");
+var ViterbiLattice = require("./ViterbiLattice");
+var SurrogateAwareString = require("../util/SurrogateAwareString");
 
 /**
  * ViterbiBuilder builds word lattice (ViterbiLattice)
@@ -98,6 +97,5 @@ ViterbiBuilder.prototype.build = function (sentence_str) {
 
     return lattice;
 };
-
 
 module.exports = ViterbiBuilder;

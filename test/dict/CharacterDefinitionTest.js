@@ -15,23 +15,24 @@
  * limitations under the License.
  */
 
-var CharacterDefinition = require("../../src/dict/CharacterDefinition.js");
-var InvokeDefinitionMap = require("../../src/dict/InvokeDefinitionMap.js");
+var CharacterDefinition = require("../../src/dict/CharacterDefinition");
+var InvokeDefinitionMap = require("../../src/dict/InvokeDefinitionMap");
+var CharacterDefinitionBuilder = require("../../src/dict/builder/CharacterDefinitionBuilder");
 
 var fs = require("fs");
-var jconv = require("jconv");
 var expect = require("chai").expect;
 
 var DIC_DIR = "test/resource/minimum-dic/";
-var ENCODING = "EUCJP";
-
 
 describe("CharacterDefinition from char.def", function () {
     var char_def;  // target object
 
     before("Create CharacterDefinition", function (done) {
-        var text = readFile(DIC_DIR + "char.def");
-        char_def = CharacterDefinition.readCharacterDefinition(text);
+        var cd_builder = new CharacterDefinitionBuilder();
+        fs.readFileSync(DIC_DIR + "char.def", "utf-8").split("\n").map(function (line) {
+            cd_builder.putLine(line);
+        });
+        char_def = cd_builder.build();
         done();
     });
 
@@ -129,10 +130,3 @@ describe("CharacterDefinition from char.def", function () {
         });
     });
 });
-
-
-var readFile = function(filename) {
-    var text = fs.readFileSync(filename);
-    text = jconv.decode(text, ENCODING);
-    return text;
-};

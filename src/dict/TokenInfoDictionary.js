@@ -17,8 +17,7 @@
 
 "use strict";
 
-var ByteBuffer = require("../util/ByteBuffer.js");
-
+var ByteBuffer = require("../util/ByteBuffer");
 
 /**
  * TokenInfoDictionary
@@ -149,6 +148,5 @@ TokenInfoDictionary.prototype.getFeatures = function (token_info_id_str) {
     var pos_id = this.dictionary.getInt(token_info_id + 6);
     return this.pos_buffer.getString(pos_id);
 };
-
 
 module.exports = TokenInfoDictionary;
